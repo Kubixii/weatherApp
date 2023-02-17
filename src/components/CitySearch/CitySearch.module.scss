@@ -1,0 +1,44 @@
+.citySearch {
+    width: 20em;
+    position: relative;
+
+    &__input {
+        display: grid;
+        grid-template-columns: 1fr 2em;
+
+        &>input {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__toggleListbutton {
+        background: #ffffff;
+
+        &>img {
+            transform: rotateZ(90deg);
+            width: 100%;
+            cursor: pointer;
+        }
+
+        &:active>img {
+            transform: rotateZ(90deg) scale(0.95)
+        }
+    }
+
+    &__citiesList {
+        border: solid black 1px;
+        border-radius: 0% 2% 2% 0%;
+        overflow-y: scroll;
+        position: absolute;
+        height: fit-content;
+        max-height: 40vh;
+        width: 100%;
+    }
+
+    &__cityOption {
+        border: solid black 1px;
+        padding: 0.5em;
+        cursor: pointer;
+    }
+}

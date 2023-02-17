@@ -1,0 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#root{
+  background: rgb(240,210,39);
+  background: linear-gradient(rgba(240,210,39,1) 0%, rgba(154,136,29,1) 100%);
+  background-size:200%;
+  background-position: center;
+    height:100vh;
+}
