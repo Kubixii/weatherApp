@@ -1,0 +1,9 @@
+.main {
+    border: solid red 1px;
+
+    &__tabs {
+        display: flex;
+        flex-direction: row;
+
+    }
+}

@@ -39,7 +39,7 @@ const CitySearch = () => {
                 onClick={
                     () => {
                         setCityListVisible(false)
-                        updateParams(city.latitude, city.longitude, 'hourly')
+                        updateParams(city, city.latitude, city.longitude, 'hourly')
                     }
                 }
             >
