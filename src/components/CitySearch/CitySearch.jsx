@@ -1,16 +1,18 @@
 import React, { useContext, useState } from 'react'
 
+import { Link } from 'react-router-dom'
 import { StoreContext } from '../../store/StoreProvider'
 import arrow from './assets/arrow.png'
 import bemCssModules from 'bem-css-modules'
 import { default as citysearchStyles } from './CitySearch.module.scss'
 import { geocodeRequest } from '../../helpers/requests'
+import { useParams } from 'react-router'
 
 const style = bemCssModules(citysearchStyles)
 
 const CitySearch = () => {
-
-    const { getWeatherData } = useContext(StoreContext)
+    const params = useParams()
+    const { updateParams } = useContext(StoreContext)
 
     const [citySearchList, setCitySearchList] = useState([])
     const [cityListVisible, setCityListVisible] = useState(false)
@@ -30,18 +32,20 @@ const CitySearch = () => {
 
     const options = citySearchList.map(city => {
         return (
-            <div
+            <Link
                 key={city.id}
                 className={style('cityOption')}
-                value={city.id}
-                onClick={() => {
-                    setCityListVisible(false)
-                    getWeatherData(city.latitude, city.longitude)
-                }}
+                to={`/${city.latitude}/${city.longitude}/hourly`}
+                onClick={
+                    () => {
+                        setCityListVisible(false)
+                        updateParams(city.latitude, city.longitude, 'hourly')
+                    }
+                }
             >
                 <p>{city.name}</p>
                 <p>{city.country}</p>
-            </div>
+            </Link>
         )
     })
     return (
