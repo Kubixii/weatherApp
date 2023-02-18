@@ -1,8 +1,8 @@
 import { Outlet, useParams } from 'react-router';
 
-import CitySearch from '../CitySearch/CitySearch';
 import { Link } from 'react-router-dom';
 import React from 'react'
+import Search from '../Search/Search';
 import bemCssModules from 'bem-css-modules'
 import { default as mainStyles } from './Main.module.scss'
 
@@ -13,10 +13,10 @@ const Main = () => {
     const baseURL = `/${lat}/${lon}`
     return (
         <div className={style()}>
-            <CitySearch />
+            <Search />
             <div className={style('tabs')}>
                 <Link to={`${baseURL}/hourly`}>Godzinowo</Link>
-                <Link to={`${baseURL}/daily`}>Dziennie</Link>
+                <Link to={`${baseURL}/week`}>Tydzień</Link>
             </div>
             <Outlet />
         </div>

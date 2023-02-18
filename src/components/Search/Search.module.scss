@@ -1,4 +1,4 @@
-.citySearch {
+.search {
     width: 20em;
     position: relative;
 
@@ -35,11 +35,5 @@
         height: fit-content;
         max-height: 40vh;
         width: 100%;
-    }
-
-    &__cityOption {
-        border: solid black 1px;
-        padding: 0.5em;
-        cursor: pointer;
     }
 }

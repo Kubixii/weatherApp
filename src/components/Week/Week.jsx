@@ -5,21 +5,23 @@ import { useContext } from 'react'
 import { useParams } from 'react-router'
 import { weatherRequest } from '../../helpers/requests'
 
-const DisplayDaily = () => {
+const DisplayWeek = () => {
     const { lat, lon } = useParams()
     const { weatherData, updateWeatherData, currentLocation } = useContext(StoreContext)
 
     useEffect(() => {
-        const timezone = currentLocation.timezone?.replace("/", "%2F")
-        // const timezone = currentLocation
-        console.log(timezone);
-        weatherRequest.get(`forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m&timezone=${timezone}`)
+        const params = {
+            latitude: parseFloat(lat),
+            longitude: parseFloat(lon),
+            daily: 'temperature_2m_max,temperature_2m_min',
+            timezone: currentLocation.timezone
+        }
+        weatherRequest.get('forecast', { params })
             .then(res => {
                 updateWeatherData(res.data, 'daily')
             })
     }, [lat, lon])
 
-    console.log(weatherData.daily);
     return (
         <div>
             Dziennie
@@ -27,4 +29,4 @@ const DisplayDaily = () => {
     );
 }
 
-export default DisplayDaily;
+export default DisplayWeek;

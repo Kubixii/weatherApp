@@ -9,13 +9,16 @@ const DisplayHourly = () => {
     const { weatherData, updateWeatherData } = useContext(StoreContext)
 
     useEffect(() => {
-        weatherRequest.get(`forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m`)
+        const params = {
+            latitude: parseFloat(lat),
+            longitude: parseFloat(lon),
+            hourly: 'temperature_2m'
+        }
+        weatherRequest.get('forecast', { params })
             .then(res => {
                 updateWeatherData(res.data, 'hourly')
             })
     }, [lat, lon])
-
-    // console.log(weatherData.hourly);
 
     return (
         <div>
