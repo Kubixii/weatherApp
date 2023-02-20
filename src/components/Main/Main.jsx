@@ -1,5 +1,6 @@
 import { Outlet, useParams } from 'react-router';
 
+import HourlyListItem from '../../TestComponents/HourlyListItem/HourlyListItem';
 import { Link } from 'react-router-dom';
 import React from 'react'
 import Search from '../Search/Search';
@@ -13,12 +14,13 @@ const Main = () => {
     const baseURL = `/${lat}/${lon}`
     return (
         <div className={style()}>
-            <Search />
+            {/* <Search />
             <div className={style('tabs')}>
                 <Link to={`${baseURL}/hourly`}>Godzinowo</Link>
                 <Link to={`${baseURL}/week`}>Tydzień</Link>
             </div>
-            <Outlet />
+            <Outlet /> */}
+            <HourlyListItem />
         </div>
     );
 }

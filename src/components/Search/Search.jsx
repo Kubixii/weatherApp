@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { Link } from 'react-router-dom'
-import SearchOption from './SearchOption/SearchOption'
+import SearchOption from '../SearchOption/SearchOption'
 import { StoreContext } from '../../store/StoreProvider'
 import arrow from './assets/arrow.png'
 import bemCssModules from 'bem-css-modules'
 import { default as citysearchStyles } from './Search.module.scss'
 import { geocodeRequest } from '../../helpers/requests'
-import { useParams } from 'react-router'
 
 const style = bemCssModules(citysearchStyles)
 

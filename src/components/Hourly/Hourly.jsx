@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react'
 
 import { StoreContext } from '../../store/StoreProvider';
+import Weatherhourly from '../WeatherHourly/Weatherhourly';
+import { tempWeatherDataHourly } from '../../helpers/defaults';
 import { useParams } from 'react-router';
 import { weatherRequest } from '../../helpers/requests';
 
-const DisplayHourly = () => {
+const Hourly = () => {
     const { lat, lon } = useParams()
-    const { weatherData, updateWeatherData } = useContext(StoreContext)
+    const { weatherData: { hourly }, updateWeatherData } = useContext(StoreContext)
 
     useEffect(() => {
         const params = {
@@ -20,11 +22,14 @@ const DisplayHourly = () => {
             })
     }, [lat, lon])
 
+
+
     return (
-        <div>
-            Godzinowo
-        </div>
+        <Weatherhourly
+            units={tempWeatherDataHourly.hourly_units}
+            data={tempWeatherDataHourly.hourly}
+        />
     );
 }
 
-export default DisplayHourly;
+export default Hourly;

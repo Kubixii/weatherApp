@@ -1,3 +1,7 @@
 TODO
 weather api open-meteo
 komponenty dla danych z api
+
+dodać font (chyba poppins)
+
+generować obiekty na podstawie danych z api tak jak jest w komponencie testowym

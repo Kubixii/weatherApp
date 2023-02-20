@@ -22,6 +22,7 @@ const DisplayWeek = () => {
             })
     }, [lat, lon])
 
+
     return (
         <div>
             Dziennie
