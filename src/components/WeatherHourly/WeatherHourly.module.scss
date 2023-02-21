@@ -26,7 +26,7 @@
     &__tempList {
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        // overflow: hidden;
         transition: max-height 0.3s;
 
         &[aria-hidden="true"] {
@@ -34,7 +34,7 @@
         }
 
         &[aria-hidden="false"] {
-            max-height: 200vh;
+            max-height: 500vh;
         }
 
     }

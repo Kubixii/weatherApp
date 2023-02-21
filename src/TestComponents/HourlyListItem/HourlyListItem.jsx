@@ -7,39 +7,39 @@ import cloudy from './assets/cloudy.png'
 import { default as hourlylistitemStyles } from './HourlyListItem.module.scss'
 import partlyCloudyDay from './assets/partlyCloudyDay.png'
 import partlyCloudyNight from './assets/partlyCloudyNight.png'
-import { tempHourlyListItem } from '../../helpers/defaults'
 import { useState } from 'react'
+
+// import { tempHourlyListItem } from '../../helpers/defaults'
+
 
 const style = bemCssModules(hourlylistitemStyles)
 
-const HourlyListItem = () => {
-    const {
-        time,
-        temperature,
-        relativehumidity,
-        apparent_temperature,
-        precipitation,
-        surface_pressure,
-        cloudcover,
-        windspeed
-    } = tempHourlyListItem
-
+const HourlyListItem = ({
+    time,
+    temperature_2m,
+    relativehumidity_2m,
+    apparent_temperature,
+    precipitation,
+    surface_pressure,
+    cloudcover,
+    windspeed_10m,
+    units,
+}) => {
     const [icon, setIcon] = useState(null)
-
     useEffect(() => {
+        const timeInt = parseInt(time.slice(0, 2))
         switch (true) {
-            case cloudcover.value <= 33: {
-                const timeInt = parseInt(time.slice(2))
+            case cloudcover <= 33: {
                 if (timeInt > 6 && timeInt < 22) setIcon(clearDay)
                 else setIcon(clearNight)
                 break;
             }
-            case cloudcover.value <= 66: {
+            case cloudcover <= 66: {
                 if (timeInt > 6 && timeInt < 22) setIcon(partlyCloudyDay)
                 else setIcon(partlyCloudyNight)
                 break;
             }
-            case cloudcover.value <= 100: {
+            case cloudcover <= 100: {
                 setIcon(cloudy)
                 break;
             }
@@ -48,20 +48,20 @@ const HourlyListItem = () => {
     return (
         <div className={style()}>
             <div className={style('timeTemperature')}>
-                <p>{time.value}</p>
+                <p>{time}</p>
             </div>
             <div className={style('weatherIcon')}>
                 <img src={icon} alt="icon" />
             </div>
             <div className={style('mainWeatherData')}>
-                <p>{`${temperature.value}${temperature.unit}`}</p>
-                <p>apparent: <span>{`${apparent_temperature.value}${apparent_temperature.unit}`}</span></p>
+                <p>{`${temperature_2m}${units['temperature_2m']}`}</p>
+                <p>apparent: <span>{`${apparent_temperature}${units['apparent_temperature']}`}</span></p>
             </div>
             <div className={style('restWeatherData')}>
-                <p>humidity:<span>{` ${relativehumidity.value}${relativehumidity.unit}`}</span></p>
-                <p>windspeed:<span>{` ${windspeed.value}${windspeed.unit}`}</span></p>
-                <p>precipitation:<span>{` ${precipitation.value}${precipitation.unit}`}</span></p>
-                <p>pressure:<span>{` ${surface_pressure.value}${surface_pressure.unit}`}</span></p>
+                <p>humidity:<span>{` ${relativehumidity_2m}${units['relativehumidity_2m']}`}</span></p>
+                <p>windspeed:<span>{` ${windspeed_10m}${units['windspeed_10m']}`}</span></p>
+                <p>precipitation:<span>{` ${precipitation}${units['precipitation']}`}</span></p>
+                <p>pressure:<span>{` ${surface_pressure}${units['surface_pressure']}`}</span></p>
             </div>
         </div>
     );

@@ -1,55 +1,64 @@
-import React from 'react'
-import WeatherHourlyPerDay from '../WeatherHourlyPerDay/WeatherHourlyPerDay'
+import React, { useState } from 'react'
 
-const Weatherhourly = ({
+import HourlyListItem from '../../TestComponents/HourlyListItem/HourlyListItem';
+import arrow from './assets/arrow.png'
+import bemCssModules from 'bem-css-modules'
+import { default as weatherhourlyStyles } from './Weatherhourly.module.scss'
+
+const style = bemCssModules(weatherhourlyStyles)
+
+const WeatherHourly = ({
     units,
-    data
+    data,
+    entries,
+    days
 }) => {
-    const { temperature_2m, time } = data
-    const splitDate = []
-    const splitTime = []
-    time.forEach(item => {
-        const [d, t] = item.split("T")
-        splitDate.push(d)
-        splitTime.push(t)
-    })
-    const sliceIntoChunks = (arr, chunkSize) => {
-        const res = [];
-        for (let i = 0; i < arr.length; i += chunkSize) {
-            const chunk = arr.slice(i, i + chunkSize);
-            res.push(chunk);
-        }
-        return res;
-    }
-    const combineArrays = (arr1, arr2) => {
-        const combined = []
-        for (let i = 0; i < arr1.length; i += 1) {
-            combined.push([arr1[i], arr2[i]])
-        }
-        return combined
-    }
+    const [showList, setshowList] = useState(true)
+    const toggleList = () => setshowList(!showList);
 
-    const reducedDate = [...new Set(splitDate)]
-    const timeTemperatureData = combineArrays(
-        sliceIntoChunks(splitTime, 24),
-        sliceIntoChunks(temperature_2m, 24)
-    )
-    const hourlyDataList = reducedDate.map((time, index) => {
+    const hourlyDataList = data !== undefined ? data?.map((day, index) => {
+
+        const listElements = day.map((hour, idx) => {
+            return (<HourlyListItem
+                key={idx}
+                time={hour.time}
+                temperature_2m={hour.temperature_2m}
+                relativehumidity_2m={hour.relativehumidity_2m}
+                apparent_temperature={hour.apparent_temperature}
+                precipitation={hour.precipitation}
+                surface_pressure={hour.surface_pressure}
+                cloudcover={hour.cloudcover}
+                windspeed_10m={hour.windspeed_10m}
+                units={units}
+            />)
+        })
+        //FIX THING HERE
         return (
-            <WeatherHourlyPerDay
-                key={index}
-                day={time}
-                unit={units.temperature_2m}
-                timeTemperature={timeTemperatureData[index]}
-            />
+            <React.Fragment key={days[index]}>
+                <div
+                    className={style('date')}
+                    onClick={toggleList}
+                >
+                    <p>{days[index]}</p>
+                    <img
+                        src={arrow}
+                        alt="expand" />
+                </div>
+                <div
+                    className={style('tempList')}
+                    aria-hidden={showList}
+                >
+                    {listElements}
+                </div>
+            </React.Fragment>
         )
-    })
+    }) : []
 
     return (
-        <div>
+        <div className={style()}>
             {hourlyDataList}
         </div>
     );
 }
 
-export default Weatherhourly;
+export default WeatherHourly;

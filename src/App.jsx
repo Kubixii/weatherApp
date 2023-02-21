@@ -1,3 +1,5 @@
+import './fonts/fonts.css'
+
 import { Navigate, Route, HashRouter as Router, Routes } from 'react-router-dom'
 
 import Hourly from './components/Hourly/Hourly';

@@ -2,18 +2,21 @@
     max-width: fit-content;
     display: grid;
     gap: 1em;
-    grid-template-columns: 5em 5em 0.6fr 1fr;
+    grid-template-columns: 5em 5em auto auto;
 
-    &__timeTemperature {
+    &__time {
         font-size: 1.8em;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-family: 'Poppins-SemiBold';
     }
 
     &__weatherIcon {
         padding: 0.5em;
+        display: flex;
+        align-items: center;
 
         &>img {
             width: 100%;
@@ -21,11 +24,26 @@
     }
 
     &__mainWeatherData {
-        display: grid;
-        grid-template-rows: 1fr fit-content;
+        width: fit-content;
+        text-align: center;
+        font-family: 'Poppins-Medium';
+        margin: auto 0;
 
-        &>p:nth-child(1) {
-            font-size: 2.5em;
+        &>p {
+            &:nth-child(1) {
+                font-size: 2.5em;
+            }
+
+            &:nth-child(2) {
+                font-size: 0.8em;
+                font-family: 'Poppins-Regular';
+                text-transform: uppercase;
+
+                &>span {
+                    text-transform: none;
+                    color: #6b6b6b;
+                }
+            }
         }
     }
 
@@ -34,12 +52,19 @@
         display: flex;
         flex-direction: column;
         justify-self: flex-end;
+        font-family: 'Poppins-Medium';
 
         &>p {
+            text-transform: uppercase;
             width: 100%;
             display: flex;
             gap: 1em;
             justify-content: space-between;
+
+            &>span {
+                text-transform: none;
+                color: #6b6b6b
+            }
         }
     }
 }
