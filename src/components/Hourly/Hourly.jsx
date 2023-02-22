@@ -45,14 +45,12 @@ const Hourly = () => {
                     })
                     return hours
                 })
-                const entries = Object.entries(hourly_units).map(entry => entry[0])
                 const units = hourly_units
                 delete units.time
 
                 const data = {
                     units,
                     days: reducedDate,
-                    entries,
                     data: dataArray
                 }
 
@@ -63,7 +61,6 @@ const Hourly = () => {
         <WeatherHourly
             units={hourly.units}
             data={hourly.data}
-            entries={hourly.entries}
             days={hourly.days}
         />
     );

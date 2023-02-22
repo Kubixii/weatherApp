@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-
-import HourlyListItem from '../../TestComponents/HourlyListItem/HourlyListItem';
-import arrow from './assets/arrow.png'
+import HourlyListItem from '../HourlyListItem/HourlyListItem'
+import ListWrapper from '../ListWrapper/ListWrapper';
+import React from 'react'
 import bemCssModules from 'bem-css-modules'
 import { default as weatherhourlyStyles } from './Weatherhourly.module.scss'
 
@@ -10,16 +9,13 @@ const style = bemCssModules(weatherhourlyStyles)
 const WeatherHourly = ({
     units,
     data,
-    entries,
     days
 }) => {
-    const [showList, setshowList] = useState(true)
-    const toggleList = () => setshowList(!showList);
 
     const hourlyDataList = data !== undefined ? data?.map((day, index) => {
 
-        const listElements = day.map((hour, idx) => {
-            return (<HourlyListItem
+        const listElements = day.map((hour, idx) => (
+            <HourlyListItem
                 key={idx}
                 time={hour.time}
                 temperature_2m={hour.temperature_2m}
@@ -29,28 +25,15 @@ const WeatherHourly = ({
                 surface_pressure={hour.surface_pressure}
                 cloudcover={hour.cloudcover}
                 windspeed_10m={hour.windspeed_10m}
-                units={units}
-            />)
-        })
-        //FIX THING HERE
+                units={units} />
+        ))
         return (
-            <React.Fragment key={days[index]}>
-                <div
-                    className={style('date')}
-                    onClick={toggleList}
-                >
-                    <p>{days[index]}</p>
-                    <img
-                        src={arrow}
-                        alt="expand" />
-                </div>
-                <div
-                    className={style('tempList')}
-                    aria-hidden={showList}
-                >
-                    {listElements}
-                </div>
-            </React.Fragment>
+            <ListWrapper
+                key={days[index]}
+                title={days[index].replaceAll("_", "-")}
+            >
+                {listElements}
+            </ListWrapper>
         )
     }) : []
 

@@ -1,43 +1,4 @@
 .weatherHourlyPerDay {
-    display: flex;
-    flex-direction: column;
-
-    &__date {
-        display: grid;
-        grid-template-columns: 1fr 4vw;
-        padding: 0.5vw;
-        border: solid red 1px;
-        cursor: pointer;
-
-        &>img {
-            transition: transform 0.1s;
-            width: 100%;
-        }
-    }
-
-    &:has(div[aria-hidden="true"])>&__date>img {
-        transform: rotateZ(90deg);
-    }
-
-    &:has(div[aria-hidden="false"])>&__date>img {
-        transform: rotateZ(-90deg);
-    }
-
-    &__tempList {
-        display: flex;
-        flex-direction: column;
-        // overflow: hidden;
-        transition: max-height 0.3s;
-
-        &[aria-hidden="true"] {
-            max-height: 0vh;
-        }
-
-        &[aria-hidden="false"] {
-            max-height: 500vh;
-        }
-
-    }
 
     &__listItem {
         display: grid;

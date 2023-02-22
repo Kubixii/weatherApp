@@ -9,9 +9,6 @@ import partlyCloudyDay from './assets/partlyCloudyDay.png'
 import partlyCloudyNight from './assets/partlyCloudyNight.png'
 import { useState } from 'react'
 
-// import { tempHourlyListItem } from '../../helpers/defaults'
-
-
 const style = bemCssModules(hourlylistitemStyles)
 
 const HourlyListItem = ({
@@ -47,7 +44,7 @@ const HourlyListItem = ({
     }, [])
     return (
         <div className={style()}>
-            <div className={style('timeTemperature')}>
+            <div className={style('time')}>
                 <p>{time}</p>
             </div>
             <div className={style('weatherIcon')}>
