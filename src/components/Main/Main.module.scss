@@ -1,9 +1,15 @@
 .main {
-    border: solid red 1px;
+    width: 100%;
 
     &__tabs {
         display: flex;
         flex-direction: row;
+    }
 
+    &__outletWrapper {
+        border-top: solid black 1px;
+        height: 50vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
 }

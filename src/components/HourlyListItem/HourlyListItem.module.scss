@@ -2,7 +2,8 @@
     max-width: fit-content;
     display: grid;
     gap: 1em;
-    grid-template-columns: 5em 5em auto auto;
+    grid-template-columns: 5.5em 5.5em 10em auto;
+    padding: 0em 1em;
 
     &__time {
         font-size: 1.8em;

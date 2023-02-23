@@ -1,10 +1,6 @@
 import HourlyListItem from '../HourlyListItem/HourlyListItem'
 import ListWrapper from '../ListWrapper/ListWrapper';
 import React from 'react'
-import bemCssModules from 'bem-css-modules'
-import { default as weatherhourlyStyles } from './Weatherhourly.module.scss'
-
-const style = bemCssModules(weatherhourlyStyles)
 
 const WeatherHourly = ({
     units,
@@ -37,11 +33,7 @@ const WeatherHourly = ({
         )
     }) : []
 
-    return (
-        <div className={style()}>
-            {hourlyDataList}
-        </div>
-    );
+    return hourlyDataList;
 }
 
 export default WeatherHourly;

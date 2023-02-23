@@ -6,11 +6,13 @@ import arrow from './assets/arrow.png'
 import bemCssModules from 'bem-css-modules'
 import { default as citysearchStyles } from './Search.module.scss'
 import { geocodeRequest } from '../../helpers/requests'
+import { useLocation } from 'react-router'
 
 const style = bemCssModules(citysearchStyles)
 
 const Search = () => {
     const { updateParams } = useContext(StoreContext)
+    const location = useLocation()
 
     const [citySearch, setCitySearch] = useState('')
     const [citySearchList, setCitySearchList] = useState([])
@@ -40,7 +42,7 @@ const Search = () => {
             key={city.id}
             name={city.name}
             country={city.country}
-            url={`/${city.latitude}/${city.longitude}/hourly`}
+            url={`/${city.latitude}/${city.longitude}/${location.pathname.split("/")[3]}`}
             onclick={() => {
                 setCityListVisible(false)
                 updateParams(city, city.latitude, city.longitude, 'hourly')

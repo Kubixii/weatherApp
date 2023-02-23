@@ -1,29 +1,24 @@
 import React from 'react'
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router';
+import { motion } from 'framer-motion'
 
 const MotionWrapper = ({ children }) => {
     const initial = {
-        transform: "translateY(120%)"
+        transform: "translateX(-120%)"
     }
 
     const animate = {
-        transform: ["translateY(120%)", "translateY(0%)"]
+        transform: ["translateX(-120%)", "translateX(0%)"]
     }
 
     const exit = {
-        transform: "translateY(120%)"
+        transform: "translateX(120%)"
     }
     return (
         <motion.div
             initial={initial}
             animate={animate}
             exit={exit}
-            transition={{ duration: 0.1 }}
-            style={{
-                overflow: "hidden",
-                height: "2vh"
-            }}
+            transition={{ duration: 0.3 }}
         >
             {children}
         </motion.div>

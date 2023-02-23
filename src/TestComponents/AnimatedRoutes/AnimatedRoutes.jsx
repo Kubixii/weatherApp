@@ -11,25 +11,27 @@ import TestPageTwo from '../TestPageTwo/TestPageTwo';
 const AnimatedRoutes = () => {
     const location = useLocation()
     return (
-        // <AnimatePresence
-        //     key={location.pathname}
-        // >
-        <Routes>
-            <Route path='/jeden' element={<TestPageOne />}>
-                <Route path='cos' element={
-                    <MotionWrapper>
-                        <Cos />
-                    </MotionWrapper>
-                } />
-                <Route path='cos2' element={
-                    <MotionWrapper>
-                        <Cos2 />
-                    </MotionWrapper>
-                } />
-            </Route>
-            <Route path='/dwa' element={<TestPageTwo />} />
-        </Routes>
-        // </AnimatePresence>
+        <AnimatePresence
+            mode="wait"
+        >
+            <Routes
+                location={location} key={location.pathname}
+            >
+                <Route path='/jeden' element={<TestPageOne />}>
+                    <Route path='cos' element={
+                        <MotionWrapper>
+                            <Cos />
+                        </MotionWrapper>
+                    } />
+                    <Route path='cos2' element={
+                        <MotionWrapper>
+                            <Cos2 />
+                        </MotionWrapper>
+                    } />
+                </Route>
+                <Route path='/dwa' element={<TestPageTwo />} />
+            </Routes>
+        </AnimatePresence>
     );
 }
 

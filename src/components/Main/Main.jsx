@@ -18,7 +18,9 @@ const Main = () => {
                 <Link to={`${baseURL}/hourly`}>Godzinowo</Link>
                 <Link to={`${baseURL}/week`}>Tydzień</Link>
             </div>
-            <Outlet />
+            <div className={style('outletWrapper')}>
+                <Outlet />
+            </div>
         </div>
     );
 }

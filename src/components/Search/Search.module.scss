@@ -1,6 +1,7 @@
 .search {
     width: 20em;
     position: relative;
+    z-index: 10;
 
     &__input {
         display: grid;

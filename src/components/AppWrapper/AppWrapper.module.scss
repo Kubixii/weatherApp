@@ -1,0 +1,16 @@
+.appWrapper {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-items: center;
+    border: solid red 1px;
+    height: 100vh;
+
+    &__wrapper {
+        padding: 1em;
+        background: rgb(48, 228, 193);
+        background: radial-gradient(circle, rgba(48, 228, 193, 1) 0%, rgba(61, 219, 209, 1) 25%, rgba(12, 237, 236, 1) 50%, rgba(8, 229, 242, 0.9780287114845938) 75%, rgba(0, 212, 255, 1) 100%);
+        border-radius: 1em;
+        width: 40em;
+    }
+}

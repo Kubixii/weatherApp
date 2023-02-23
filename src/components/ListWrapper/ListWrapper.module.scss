@@ -1,24 +1,37 @@
 .listWrapper {
-    &__date {
+    width: 100%;
+
+    &:has(div[aria-hidden="true"])>&__titleBar>&__arrowWrapper {
+        transform: rotateZ(90deg);
+    }
+
+    &:has(div[aria-hidden="false"])>&__titleBar>&__arrowWrapper {
+        transform: rotateZ(-90deg);
+    }
+
+    &__titleBar {
         display: grid;
-        grid-template-columns: 1fr 4vw;
-        padding: 0.5vw;
-        border: solid red 1px;
+        grid-template-columns: 1fr 3vw;
+        margin: 0 auto;
+        border-bottom: solid black 1px;
         cursor: pointer;
+        height: 2vh;
+        height: fit-content;
+    }
+
+    &__date {
+        padding: 0.5vw;
+    }
+
+    &__arrowWrapper {
+        width: 3em;
+        transition: transform 0.1s;
 
         &>img {
-            transition: transform 0.1s;
             width: 100%;
         }
     }
 
-    &:has(div[aria-hidden="true"])>&__date>img {
-        transform: rotateZ(90deg);
-    }
-
-    &:has(div[aria-hidden="false"])>&__date>img {
-        transform: rotateZ(-90deg);
-    }
 
     &__tempList {
         display: flex;
