@@ -1,0 +1,56 @@
+.todaysWeather {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-family: 'Poppins-Regular';
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1em;
+
+    &>div {
+        display: grid;
+        gap: 1em;
+
+        &:nth-child(2) {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    }
+
+    &__sunset,
+    &__sunrise {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__sunIconWrapper {
+
+        width: 70%;
+
+        &>img {
+
+            width: 100%
+        }
+    }
+
+    &__time {
+        font-size: 1.5em;
+    }
+
+    &__imageWrapper {
+        width: 80%;
+
+        &>img {
+            width: 100%;
+        }
+    }
+
+    &__precipitation {
+        font-size: 1.2em;
+    }
+
+}

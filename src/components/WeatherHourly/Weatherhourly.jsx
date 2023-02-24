@@ -1,6 +1,7 @@
 import HourlyListItem from '../HourlyListItem/HourlyListItem'
 import ListWrapper from '../ListWrapper/ListWrapper';
-import React from 'react'
+import React, { useContext } from 'react'
+import { StoreContext } from '../../store/StoreProvider';
 
 const WeatherHourly = ({
     units,
@@ -8,6 +9,7 @@ const WeatherHourly = ({
     days
 }) => {
 
+    const { units, days, data } = useContext(StoreContext)
     const hourlyDataList = data !== undefined ? data?.map((day, index) => {
 
         const listElements = day.map((hour, idx) => (

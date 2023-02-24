@@ -20,6 +20,7 @@ const Search = () => {
     const toggleCityList = () => setCityListVisible(!cityListVisible)
 
     const handleCitySearch = (e) => {
+
         setCityListVisible(true)
         setCitySearch(e.target.value)
     }
@@ -44,6 +45,7 @@ const Search = () => {
             country={city.country}
             url={`/${city.latitude}/${city.longitude}/${location.pathname.split("/")[3]}`}
             onclick={() => {
+                setCitySearch(city.name)
                 setCityListVisible(false)
                 updateParams(city, city.latitude, city.longitude, 'hourly')
             }}
@@ -58,7 +60,7 @@ const Search = () => {
                     value={citySearch}
                 />
                 <div
-                    onClick={toggleCityList}
+                    onClick={citySearch !== '' ? toggleCityList : null}
                     className={style('toggleListbutton')}
                 >
                     <img src={arrow} alt="Lista" />

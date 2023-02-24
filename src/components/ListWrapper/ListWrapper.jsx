@@ -13,8 +13,8 @@ const ListWrapper = ({ children, title }) => {
 
     return (
         <div className={style()}>
-            <div className={style('titleBar')}>
-                <div className={style('date')} onClick={toggleList}>
+            <div className={style('titleBar')} onClick={toggleList}>
+                <div className={style('date')}>
                     <p>{title}</p>
                 </div>
                 <div className={style('arrowWrapper')}>

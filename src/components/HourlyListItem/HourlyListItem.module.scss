@@ -5,6 +5,14 @@
     grid-template-columns: 5.5em 5.5em 10em auto;
     padding: 0em 1em;
 
+    &:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
     &__time {
         font-size: 1.8em;
         text-align: center;

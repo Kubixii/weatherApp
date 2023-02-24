@@ -1,0 +1,20 @@
+.temperatureDisplay {
+    display: flex;
+    justify-content: center;
+
+    &__text {
+
+        &[aria-label="notApparent"] {
+            font-size: 3.5em;
+        }
+
+        &[aria-label="apparent"] {
+            font-size: 1em;
+        }
+
+    }
+
+    &:has(p[aria-label="apparent"])>&__text>&__value {
+        color: #6b6b6b;
+    }
+}

@@ -17,6 +17,11 @@
         cursor: pointer;
         height: 2vh;
         height: fit-content;
+        font-family: 'Poppins-Medium';
+        font-size: 1.1em;
+        position: sticky;
+        top: 0;
+        background-color: #0ceaec;
     }
 
     &__date {

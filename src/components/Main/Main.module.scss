@@ -2,8 +2,17 @@
     width: 100%;
 
     &__tabs {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        font-family: 'Poppins-Medium';
+        text-align: center;
+        grid-template-columns: 1fr 1fr;
+
+
+        &>a {
+            padding: 0.5em;
+            color: white;
+            text-decoration: none;
+        }
     }
 
     &__outletWrapper {
@@ -11,5 +20,23 @@
         height: 50vh;
         overflow-x: hidden;
         overflow-y: scroll;
+    }
+
+    @keyframes animate {
+        0% {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        100% {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &__active {
+        animation: animate 0.3s forwards;
+    }
+
+    &__inactive {
+        animation: animate 0.3s forwards reverse;
     }
 }
